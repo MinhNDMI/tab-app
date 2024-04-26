@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState, } from "react";
+import { useState, } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -44,16 +44,16 @@ function a11yProps(index: number) {
 
 const initialCampaign: Campaign = {
   information: {
-      name: '',
-      describe: ''
+    name: '',
+    describe: ''
   },
   subCampaigns: [{
-      name: 'Chiến dịch con 1',
-      status: true,
-      ads: [{
-          name: 'Quảng cáo mặc định',
-          quantity: 1
-      }]
+    name: 'Chiến dịch con 1',
+    status: true,
+    ads: [{
+      name: 'Quảng cáo mặc định',
+      quantity: 1
+    }]
   }]
 };
 
@@ -80,7 +80,7 @@ export default function CampaignForm() {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <Box sx={{display:"flex", flexDirection:'column', gap:'12px'}}>
+          <Box sx={{ display: "flex", flexDirection: 'column', gap: '12px' }}>
             <TextField
               required
               id="outlined-required"
@@ -88,23 +88,27 @@ export default function CampaignForm() {
               defaultValue=""
               variant="standard"
             />
-            <TextField id="outlined-required" label="Mô tả" defaultValue="" variant="standard"/>
+            <TextField id="outlined-required" label="Mô tả" defaultValue="" variant="standard" />
           </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           <Box>
             <Box display='flex'>
-            <Button sx={{color:'red'}} variant="outlined" startIcon={<AddIcon />}></Button>
-            <List>
-              {campaign.subCampaigns.map((item, index) => (
-                <ListItem key={index}>
-                    <Box p={"16px"}>
-                      {item?.name}
-                      <CheckCircleIcon/>
+              <Button sx={{ color: 'red', height:'fit-content' }} variant="outlined" startIcon={<AddIcon />}></Button>
+              <List>
+                {campaign.subCampaigns.map((item, index) => (
+                  <ListItem key={index}>
+                    <Box p={"16px"} sx={{ border: '2px solid grey', display: 'flex', flexDirection: 'column' }} alignItems="center"
+                      gap={4}>
+                      <Box>
+                        {item?.name}
+                        {item?.status ? <CheckCircleIcon color="success"/> : <CheckCircleIcon />}
+                      </Box>
+                      <Typography>{item.ads.reduce((total, curr) => total+curr.quantity, 0)}</Typography>
                     </Box>
                   </ListItem>
-              ))}
-            </List>
+                ))}
+              </List>
             </Box>
             <Box>
 

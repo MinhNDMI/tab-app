@@ -8,7 +8,7 @@ import {
   Button,
   TextField,
 } from "@mui/material";
-import { Campaign, SubCampaign, Ad } from "./types";
+import { Campaign, SubCampaign } from "./types";
 import { v4 as uuidv4 } from "uuid";
 
 
